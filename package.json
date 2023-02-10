@@ -1,0 +1,28 @@
+{
+  "name": "@matecon/express-errors",
+  "version": "1.0.0",
+  "description": "Predefined errors for expressJS",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MateCon/express-errors.git"
+  },
+  "keywords": [
+    "express",
+    "error-handling"
+  ],
+  "author": "MateCon",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MateCon/express-errors/issues"
+  },
+  "homepage": "https://github.com/MateCon/express-errors#readme",
+  "files": ["lib/**/*"],
+  "devDependencies": {
+    "typescript": "^4.9.5"
+  }
+}
