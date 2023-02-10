@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Predefined errors for expressJS",
   "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "npm run build"
