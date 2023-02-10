@@ -1,3 +1,5 @@
+import { z } from "zod";
+
 export enum StatusCodes {
   Ok = 200,
   Created = 201,
@@ -90,5 +92,43 @@ export class NotImplementedError extends ExpressError {
 export class ServiceUnavailableError extends ExpressError {
   constructor(message?: string) {
       super(StatusCodes.ServiceUnavailable, message);
+  }
+}
+
+export interface ReturnType {
+  status: StatusCodes,
+  message?: string,
+  cause?: string
+}
+
+export const otherErrors: { [key: string]: ReturnType } = {
+  CastError: { status: StatusCodes.BadRequest, message: 'Invalid data' }
+}
+
+export default function parseExpressError(error: unknown): ReturnType {
+  if (error instanceof ExpressError) {
+      return {
+          status: error.status,
+          message: error.message
+      }
+  } else if (error instanceof z.ZodError) {
+      return {
+          status: StatusCodes.BadRequest,
+          message: "Validation Error",
+          cause: error.message
+      }
+  } else if (error instanceof Error) {
+      if (error.name in otherErrors) {
+          return otherErrors[error.name];
+      } else {
+          return {
+              status: StatusCodes.ServerError,
+              message: 'Server Error ' + error.message
+          }
+      }
+  }
+  return {
+      status: StatusCodes.ServerError,
+      message: 'Server Error'
   }
 }

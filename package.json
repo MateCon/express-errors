@@ -22,8 +22,13 @@
     "url": "https://github.com/MateCon/express-errors/issues"
   },
   "homepage": "https://github.com/MateCon/express-errors#readme",
-  "files": ["lib/**/*"],
+  "files": [
+    "lib/**/*"
+  ],
   "devDependencies": {
     "typescript": "^4.9.5"
+  },
+  "dependencies": {
+    "zod": "^3.20.6"
   }
 }
